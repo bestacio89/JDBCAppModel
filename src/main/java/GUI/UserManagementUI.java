@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-public class UserManagementUI extends JFrame {
+public class UserManagementUI extends JPanel {
     private final UserDAO userDAO = new UserDAO();
     private DefaultTableModel tableModel;
     private JTable userTable;
@@ -23,9 +23,6 @@ public class UserManagementUI extends JFrame {
     private int selectedUserId = -1;
 
     public UserManagementUI() {
-        setTitle("User Management");
-        setSize(800, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         // Table Model
@@ -208,9 +205,5 @@ public class UserManagementUI extends JFrame {
         for (User user : users) {
             tableModel.addRow(new Object[]{user.getId(), user.getName(), user.getEmail(), user.getDiscordName(), user.getLinkedinUrl()});
         }
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new UserManagementUI().setVisible(true));
     }
 }

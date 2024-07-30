@@ -53,7 +53,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.example.gui.UserManagementUI</mainClass>
+                            <mainClass>com.example.gui.MainUI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
