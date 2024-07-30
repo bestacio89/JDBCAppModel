@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187b691e-13e4-4a39-ae42-f43684431a89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/FourniseurDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Fourniseur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/FourniseurManagementUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-4.0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/LogPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/LogPanelUI.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

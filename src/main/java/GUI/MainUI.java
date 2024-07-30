@@ -14,6 +14,7 @@ public class MainUI extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         tabbedPane.addTab("User Management", new UserManagementUI());
         tabbedPane.addTab("Product Management", new ProductManagementUI());
+        tabbedPane.addTab("Supplier Management", new FourniseurManagementUI());
        // Adding the log panel tab
 
         // Ensure tab changes are smooth
