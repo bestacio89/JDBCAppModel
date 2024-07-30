@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187b691e-13e4-4a39-ae42-f43684431a89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/FourniseurDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Fourniseur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/FourniseurManagementUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-4.0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/ArticleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/BonDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/CompoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Article.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Bon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Compo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/ArticleManagementUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/BonManagementUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/CompoUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-5.0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-6.0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
