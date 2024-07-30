@@ -7,8 +7,12 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProductManagementUI extends JPanel {
+    private static final Logger LOGGER = Logger.getLogger(ProductManagementUI.class.getName());
+
     private final ProductDAO productDAO = new ProductDAO();
     private DefaultTableModel tableModel;
     private JTable productTable;
@@ -117,16 +121,13 @@ public class ProductManagementUI extends JPanel {
     }
 
     private boolean isValidInput(String name, String price, String quantity) {
-        if (name == null || name.trim().isEmpty()) {
-            return false;
-        }
         try {
             Double.parseDouble(price);
             Integer.parseInt(quantity);
+            return name != null && !name.trim().isEmpty();
         } catch (NumberFormatException e) {
             return false;
         }
-        return true;
     }
 
     private void addProduct() {
@@ -134,14 +135,34 @@ public class ProductManagementUI extends JPanel {
         String description = descriptionField.getText();
         String price = priceField.getText();
         String quantity = quantityField.getText();
+
         if (isValidInput(name, price, quantity)) {
-            productDAO.addProduct(name, description, Double.parseDouble(price), Integer.parseInt(quantity));
-            refreshTable();
-            nameField.setText("");
-            descriptionField.setText("");
-            priceField.setText("");
-            quantityField.setText("");
-            JOptionPane.showMessageDialog(this, "Product added successfully.");
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    try {
+                        productDAO.addProduct(name, description, Double.parseDouble(price), Integer.parseInt(quantity));
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to add product", e);
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    try {
+                        refreshTable();
+                        nameField.setText("");
+                        descriptionField.setText("");
+                        priceField.setText("");
+                        quantityField.setText("");
+                        JOptionPane.showMessageDialog(ProductManagementUI.this, "Product added successfully.");
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to refresh table after adding product", e);
+                    }
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Invalid input. Please check name, price, and quantity format.");
         }
@@ -151,8 +172,28 @@ public class ProductManagementUI extends JPanel {
         int selectedRow = productTable.getSelectedRow();
         if (selectedRow != -1) {
             int productId = (int) tableModel.getValueAt(selectedRow, 0);
-            productDAO.deleteProduct(productId);
-            refreshTable();
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    try {
+                        productDAO.deleteProduct(productId);
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to delete product", e);
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    try {
+                        refreshTable();
+                        JOptionPane.showMessageDialog(ProductManagementUI.this, "Product deleted successfully.");
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to refresh table after deleting product", e);
+                    }
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Please select a product to delete.");
         }
@@ -164,8 +205,8 @@ public class ProductManagementUI extends JPanel {
             selectedProductId = (int) tableModel.getValueAt(selectedRow, 0);
             String name = (String) tableModel.getValueAt(selectedRow, 1);
             String description = (String) tableModel.getValueAt(selectedRow, 2);
-            String price = tableModel.getValueAt(selectedRow, 3).toString();
-            String quantity = tableModel.getValueAt(selectedRow, 4).toString();
+            String price = (String) tableModel.getValueAt(selectedRow, 3);
+            String quantity = (String) tableModel.getValueAt(selectedRow, 4);
             nameField.setText(name);
             descriptionField.setText(description);
             priceField.setText(price);
@@ -184,29 +225,71 @@ public class ProductManagementUI extends JPanel {
         String description = descriptionField.getText();
         String price = priceField.getText();
         String quantity = quantityField.getText();
+
         if (isValidInput(name, price, quantity) && selectedProductId != -1) {
-            productDAO.updateProduct(selectedProductId, name, description, Double.parseDouble(price), Integer.parseInt(quantity));
-            refreshTable();
-            nameField.setText("");
-            descriptionField.setText("");
-            priceField.setText("");
-            quantityField.setText("");
-            addButton.setEnabled(true);
-            deleteButton.setEnabled(true);
-            editButton.setEnabled(true);
-            saveButton.setEnabled(false);
-            selectedProductId = -1;
-            JOptionPane.showMessageDialog(this, "Product updated successfully.");
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    try {
+                        productDAO.updateProduct(selectedProductId, name, description, Double.parseDouble(price), Integer.parseInt(quantity));
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to update product", e);
+                    }
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    try {
+                        refreshTable();
+                        nameField.setText("");
+                        descriptionField.setText("");
+                        priceField.setText("");
+                        quantityField.setText("");
+                        addButton.setEnabled(true);
+                        deleteButton.setEnabled(true);
+                        editButton.setEnabled(true);
+                        saveButton.setEnabled(false);
+                        selectedProductId = -1;
+                        JOptionPane.showMessageDialog(ProductManagementUI.this, "Product updated successfully.");
+                    } catch (Exception e) {
+                        LOGGER.log(Level.SEVERE, "Failed to refresh table after updating product", e);
+                    }
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Invalid input or no product selected for update.");
         }
     }
 
-    private void refreshTable() {
-        List<Product> products = productDAO.getAllProducts();
-        tableModel.setRowCount(0);
-        for (Product product : products) {
-            tableModel.addRow(new Object[]{product.getId(), product.getName(), product.getDescription(), product.getPrice(), product.getQuantity()});
-        }
+    void refreshTable() {
+        SwingWorker<List<Product>, Void> worker = new SwingWorker<>() {
+            @Override
+            protected List<Product> doInBackground() {
+                try {
+                    return productDAO.getAllProducts();
+                } catch (Exception e) {
+                    LOGGER.log(Level.SEVERE, "Failed to get products", e);
+                    return null;
+                }
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    List<Product> products = get();
+                    tableModel.setRowCount(0);
+                    if (products != null) {
+                        for (Product product : products) {
+                            tableModel.addRow(new Object[]{product.getId(), product.getName(), product.getDescription(), product.getPrice(), product.getQuantity()});
+                        }
+                    }
+                } catch (Exception e) {
+                    LOGGER.log(Level.SEVERE, "Failed to refresh table data", e);
+                }
+            }
+        };
+        worker.execute();
     }
 }

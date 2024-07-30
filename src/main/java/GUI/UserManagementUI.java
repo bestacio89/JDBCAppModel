@@ -132,13 +132,24 @@ public class UserManagementUI extends JPanel {
         String discordName = discordField.getText();
         String linkedinUrl = linkedinField.getText();
         if (isValidInput(name, email)) {
-            userDAO.addUser(name, email, discordName, linkedinUrl);
-            refreshTable();
-            nameField.setText("");
-            emailField.setText("");
-            discordField.setText("");
-            linkedinField.setText("");
-            JOptionPane.showMessageDialog(this, "User added successfully.");
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    userDAO.addUser(name, email, discordName, linkedinUrl);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    refreshTable();
+                    nameField.setText("");
+                    emailField.setText("");
+                    discordField.setText("");
+                    linkedinField.setText("");
+                    JOptionPane.showMessageDialog(UserManagementUI.this, "User added successfully.");
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Invalid input. Please check name and email format.");
         }
@@ -148,8 +159,19 @@ public class UserManagementUI extends JPanel {
         int selectedRow = userTable.getSelectedRow();
         if (selectedRow != -1) {
             int userId = (int) tableModel.getValueAt(selectedRow, 0);
-            userDAO.deleteUser(userId);
-            refreshTable();
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    userDAO.deleteUser(userId);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    refreshTable();
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Please select a user to delete.");
         }
@@ -182,28 +204,54 @@ public class UserManagementUI extends JPanel {
         String discordName = discordField.getText();
         String linkedinUrl = linkedinField.getText();
         if (isValidInput(name, email) && selectedUserId != -1) {
-            userDAO.updateUser(selectedUserId, name, email, discordName, linkedinUrl);
-            refreshTable();
-            nameField.setText("");
-            emailField.setText("");
-            discordField.setText("");
-            linkedinField.setText("");
-            addButton.setEnabled(true);
-            deleteButton.setEnabled(true);
-            editButton.setEnabled(true);
-            saveButton.setEnabled(false);
-            selectedUserId = -1;
-            JOptionPane.showMessageDialog(this, "User updated successfully.");
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    userDAO.updateUser(selectedUserId, name, email, discordName, linkedinUrl);
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    refreshTable();
+                    nameField.setText("");
+                    emailField.setText("");
+                    discordField.setText("");
+                    linkedinField.setText("");
+                    addButton.setEnabled(true);
+                    deleteButton.setEnabled(true);
+                    editButton.setEnabled(true);
+                    saveButton.setEnabled(false);
+                    selectedUserId = -1;
+                    JOptionPane.showMessageDialog(UserManagementUI.this, "User updated successfully.");
+                }
+            };
+            worker.execute();
         } else {
             JOptionPane.showMessageDialog(this, "Invalid input or no user selected for update.");
         }
     }
 
     private void refreshTable() {
-        List<User> users = userDAO.getAllUsers();
-        tableModel.setRowCount(0);
-        for (User user : users) {
-            tableModel.addRow(new Object[]{user.getId(), user.getName(), user.getEmail(), user.getDiscordName(), user.getLinkedinUrl()});
-        }
+        SwingWorker<List<User>, Void> worker = new SwingWorker<>() {
+            @Override
+            protected List<User> doInBackground() {
+                return userDAO.getAllUsers();
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    List<User> users = get();
+                    tableModel.setRowCount(0);
+                    for (User user : users) {
+                        tableModel.addRow(new Object[]{user.getId(), user.getName(), user.getEmail(), user.getDiscordName(), user.getLinkedinUrl()});
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        worker.execute();
     }
 }

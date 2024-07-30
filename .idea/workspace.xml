@@ -5,19 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187b691e-13e4-4a39-ae42-f43684431a89" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/ProductDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entities/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/LogPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/LogPanelUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-3.0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/LogPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/LogPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/LogPanelUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/MainUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/Personal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/Personal/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-master.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/flyway.conf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +61,7 @@
       <module name="JDBCAppModel" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GUI.*" />
+          <option name="PATTERN" value="GUI.UserManagementUI" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -81,7 +74,7 @@
       <module name="JDBCAppModel" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GUI.*" />
+          <option name="PATTERN" value="GUI.UserManagementUI" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,11 +103,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/Personal/Main.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="2" />
