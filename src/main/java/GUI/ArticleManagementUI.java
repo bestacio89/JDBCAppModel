@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.ArticleDAO;
+import DAOs.Article.ArticleDAO;
 import Entities.Article;
 
 import javax.swing.*;

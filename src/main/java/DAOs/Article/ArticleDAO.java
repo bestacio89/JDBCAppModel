@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.Article;
 
 import Entities.Article;
 import Utilities.DatabaseUtil;
@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticleDAO {
+public class ArticleDAO implements IArticleDAO {
 
+    @Override
     public void addArticle(Article article) {
         String sql = "INSERT INTO ARTICLE (REF, DESIGNATION, PRIX, ID_FOU) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -25,6 +26,7 @@ public class ArticleDAO {
         }
     }
 
+    @Override
     public void updateArticle(Article article) {
         String sql = "UPDATE ARTICLE SET REF = ?, DESIGNATION = ?, PRIX = ?, ID_FOU = ? WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -42,6 +44,7 @@ public class ArticleDAO {
         }
     }
 
+    @Override
     public void deleteArticle(int id) {
         String sql = "DELETE FROM ARTICLE WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -54,6 +57,7 @@ public class ArticleDAO {
         }
     }
 
+    @Override
     public List<Article> getAllArticles() {
         List<Article> articles = new ArrayList<>();
         String sql = "SELECT * FROM ARTICLE";

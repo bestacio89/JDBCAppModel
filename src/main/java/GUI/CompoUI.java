@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.CompoDAO;
+import DAOs.Compo.CompoDAO;
 import Entities.Compo;
 
 import javax.swing.*;

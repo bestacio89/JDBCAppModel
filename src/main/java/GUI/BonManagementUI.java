@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.BonDAO;
+import DAOs.Bon.BonDAO;
 import Entities.Bon;
 
 import javax.swing.*;

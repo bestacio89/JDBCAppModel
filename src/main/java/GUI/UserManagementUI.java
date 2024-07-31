@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.UserDAO;
+import DAOs.User.UserDAO;
 import Entities.User;
 
 import javax.swing.*;

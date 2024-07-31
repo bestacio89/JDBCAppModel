@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.Bon;
 
 import Entities.Bon;
 import Utilities.DatabaseUtil;
@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BonDAO {
+public class BonDAO implements IBonDAO {
 
+    @Override
     public void addBon(Bon bon) throws SQLException {
         String query = "INSERT INTO BON (NUMERO, DATE_CMDE, DELAI, ID_FOU) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -21,6 +22,7 @@ public class BonDAO {
         }
     }
 
+    @Override
     public void updateBon(Bon bon) throws SQLException {
         String query = "UPDATE BON SET NUMERO = ?, DATE_CMDE = ?, DELAI = ?, ID_FOU = ? WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -34,6 +36,7 @@ public class BonDAO {
         }
     }
 
+    @Override
     public void deleteBon(int id) throws SQLException {
         String query = "DELETE FROM BON WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -43,6 +46,7 @@ public class BonDAO {
         }
     }
 
+    @Override
     public Bon getBon(int id) throws SQLException {
         String query = "SELECT * FROM BON WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -63,6 +67,7 @@ public class BonDAO {
         return null;
     }
 
+    @Override
     public List<Bon> getAllBons() throws SQLException {
         List<Bon> bons = new ArrayList<>();
         String query = "SELECT * FROM BON";

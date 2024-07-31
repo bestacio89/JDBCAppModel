@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.User;
 
 import Entities.User;
 import Utilities.DatabaseUtil;
@@ -8,8 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO {
+public class UserDAO implements IUserDAO {
 
+    @Override
     public void addUser(String name, String email, String discordName, String linkedinUrl) {
         String sql = "INSERT INTO users (name, email, discord_name, linkedin_url) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -24,6 +25,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public void updateUser(int id, String name, String email, String discordName, String linkedinUrl) {
         String sql = "UPDATE users SET name = ?, email = ?, discord_name = ?, linkedin_url = ? WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -39,6 +41,7 @@ public class UserDAO {
         }
     }
 
+    @Override
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -60,6 +63,7 @@ public class UserDAO {
         return users;
     }
 
+    @Override
     public void deleteUser(int id) {
         String sql = "DELETE FROM users WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();

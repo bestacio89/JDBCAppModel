@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.FourniseurDAO;
+import DAOs.Fourniseur.FourniseurDAO;
 import Entities.Fourniseur;
 
 

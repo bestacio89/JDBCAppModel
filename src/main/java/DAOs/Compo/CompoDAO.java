@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.Compo;
 
 import Entities.Compo;
 import Utilities.DatabaseUtil;
@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CompoDAO {
+public class CompoDAO implements ICompoDAO {
 
+    @Override
     public void addCompo(Compo compo) throws SQLException {
         String query = "INSERT INTO COMPO (ID_ART, ID_BON, QTE) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -20,6 +21,7 @@ public class CompoDAO {
         }
     }
 
+    @Override
     public void updateCompo(Compo compo) throws SQLException {
         String query = "UPDATE COMPO SET ID_ART = ?, ID_BON = ?, QTE = ? WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -32,6 +34,7 @@ public class CompoDAO {
         }
     }
 
+    @Override
     public void deleteCompo(int id) throws SQLException {
         String query = "DELETE FROM COMPO WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -41,6 +44,7 @@ public class CompoDAO {
         }
     }
 
+    @Override
     public Compo getCompo(int id) throws SQLException {
         String query = "SELECT * FROM COMPO WHERE ID = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -60,6 +64,7 @@ public class CompoDAO {
         return null;
     }
 
+    @Override
     public List<Compo> getAllCompos() throws SQLException {
         List<Compo> compos = new ArrayList<>();
         String query = "SELECT * FROM COMPO";

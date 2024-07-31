@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.Product;
 
 import Entities.Product;
 import Utilities.DatabaseUtil;
@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO {
+public class ProductDAO implements IProductDAO {
 
+    @Override
     public void addProduct(String name, String description, double price, int quantity) {
         String sql = "INSERT INTO products (name, description, price, quantity) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -23,6 +24,7 @@ public class ProductDAO {
         }
     }
 
+    @Override
     public void updateProduct(int id, String name, String description, double price, int quantity) {
         String sql = "UPDATE products SET name = ?, description = ?, price = ?, quantity = ? WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -38,6 +40,7 @@ public class ProductDAO {
         }
     }
 
+    @Override
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
         String sql = "SELECT * FROM products";
@@ -59,6 +62,7 @@ public class ProductDAO {
         return products;
     }
 
+    @Override
     public void deleteProduct(int id) {
         String sql = "DELETE FROM products WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();

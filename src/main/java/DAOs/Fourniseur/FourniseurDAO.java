@@ -1,4 +1,4 @@
-package DAOs;
+package DAOs.Fourniseur;
 
 import Entities.Fourniseur;
 import Utilities.DatabaseUtil;
@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FourniseurDAO {
+public class FourniseurDAO implements IFourniseurDAO {
 
+    @Override
     public void addFourniseur(String name, String contactPerson, String email, String phoneNumber) {
         String sql = "INSERT INTO fourniseurs (name, contact_person, email, phone_number) VALUES (?, ?, ?, ?)";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -23,6 +24,7 @@ public class FourniseurDAO {
         }
     }
 
+    @Override
     public void updateFourniseur(int id, String name, String contactPerson, String email, String phoneNumber) {
         String sql = "UPDATE fourniseurs SET name = ?, contact_person = ?, email = ?, phone_number = ? WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();
@@ -38,6 +40,7 @@ public class FourniseurDAO {
         }
     }
 
+    @Override
     public List<Fourniseur> getAllFourniseurs() {
         List<Fourniseur> fourniseurs = new ArrayList<>();
         String sql = "SELECT * FROM fourniseurs";
@@ -59,6 +62,7 @@ public class FourniseurDAO {
         return fourniseurs;
     }
 
+    @Override
     public void deleteFournisseur(int id) {
         String sql = "DELETE FROM fourniseurs WHERE id = ?";
         try (Connection connection = DatabaseUtil.getConnection();

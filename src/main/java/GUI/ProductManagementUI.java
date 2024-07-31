@@ -1,6 +1,6 @@
 package GUI;
 
-import DAOs.ProductDAO;
+import DAOs.Product.ProductDAO;
 import Entities.Product;
 
 import javax.swing.*;

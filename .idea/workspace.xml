@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187b691e-13e4-4a39-ae42-f43684431a89" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/Article/IArticleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/Bon/IBonDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/Compo/ICompoDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/Fourniseur/IFourniseurDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/Product/IProductDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/DAOs/User/IUserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-5.0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-5.0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-6.0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-6.0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-7.0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/db.changelog-7.0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/ArticleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/Article/ArticleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/BonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/Bon/BonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/CompoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/Compo/CompoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/FourniseurDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/Fourniseur/FourniseurDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/Product/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAOs/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAOs/User/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/ArticleManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/ArticleManagementUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/BonManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/BonManagementUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/CompoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/CompoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/FourniseurManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/FourniseurManagementUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/ProductManagementUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GUI/UserManagementUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +34,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -36,21 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MainUI.executor": "Run",
-    "Application.UserManagementUI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "B:/JavaRepos/JDBCAppModel/src/main/java/org/Personal/Main.java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MainUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserManagementUI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;B:/JavaRepos/JDBCAppModel/src/main/java/org/Personal/Main.java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="B:\JavaRepos\JDBCAppModel\src\main\resources\db" />
       <recent name="B:\JavaRepos\JDBCAppModel\src\main\resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="DAOs.User" />
+      <recent name="DAOs.Product" />
+      <recent name="DAOs.Fourniseur" />
+      <recent name="DAOs.Compo" />
+      <recent name="DAOs.Bon" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MainUI">
